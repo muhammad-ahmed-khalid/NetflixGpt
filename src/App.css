@@ -1,0 +1,17 @@
+.loginBG{
+    width: 100%;
+    height : 100vh
+}
+.loginBGImage{
+    width: 100%;
+    height : 100vh
+}
+.formWrapper{
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
