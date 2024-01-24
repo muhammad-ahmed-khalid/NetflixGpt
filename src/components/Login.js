@@ -3,6 +3,10 @@ import Header from "./Header";
 import "../App.css";
 
 const Login = () => {
+  const [isSigninForm, setIsSigninForm] = React.useState(true);
+  const handlePressToggle = () => {
+    setIsSigninForm(!isSigninForm);
+  }
   return (
     <div>
       <Header />
@@ -14,11 +18,16 @@ const Login = () => {
         />
       </div>
       <div className="formWrapper">
-        <form className="relative z-10 bg-black flex flex-col">
-          <input type="text" placeholder="Email Address" className="p-2 m-2" />
-          <input type="password" placeholder="Password" className="p-2 m-2" />
-          <button className="p-2 m-2">Sign In</button>
+       <div className="relative  w-3/12 z-10 bg-black flex flex-col px-10 py-10 text-white">
+       <h2 className="text-3xl">{isSigninForm? "Sign In" : "Sign Up"}</h2>
+        <form >
+          {!isSigninForm &&  <input type="text" placeholder="Full Name" className="p-2 my-2 w-full" />}
+          <input type="text" placeholder="Email Address" className="p-2 my-2 w-full" />
+          <input type="password" placeholder="Password" className="p-2 my-2 w-full" />
+          <button className="p-2 c w-full border-2">{isSigninForm ? "Sign In" : "Sign Up"}</button>
         </form>
+        <button onClick={handlePressToggle}>{isSigninForm ? "Create New Account" : "Already a user"}</button>
+       </div>
       </div>
     </div>
   );
