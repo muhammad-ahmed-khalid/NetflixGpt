@@ -19,7 +19,9 @@ const Login = () => {
   console.log(errorMessage, "errorMessageerrorMessageerrorMessage");
 
   const handlePressToggle = () => {
+    setErrorMessage(null)
     setIsSigninForm(!isSigninForm);
+
   };
   return (
     <div>
