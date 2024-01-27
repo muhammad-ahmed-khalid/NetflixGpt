@@ -93,7 +93,7 @@ const Login = () => {
         />
       </div>
       <div className="formWrapper">
-        <div className="relative  w-3/12 z-10 bg-black flex flex-col px-10 py-10 text-white">
+        <div className="relative  w-3/12 z-10 bg-black flex flex-col px-10 py-10 text-white bg-opacity-80 rounded-xl">
           <h2 className="text-3xl">{isSigninForm ? "Sign In" : "Sign Up"}</h2>
           <form onSubmit={(e) => e.preventDefault()}>
             {!isSigninForm && (
