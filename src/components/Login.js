@@ -1,27 +1,29 @@
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import React, { useRef } from "react";
-import Header from "./Header";
+import { useDispatch } from "react-redux";
 import "../App.css";
 import { checkValidData } from "../utility/Utils";
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../utility/firebase";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../utility/userSlice";
-import { useDispatch } from "react-redux";
+import Header from "./Header";
 
 const Login = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [isSigninForm, setIsSigninForm] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
 
-  const handlePressSubmit =  () => {
+  const handlePressSubmit = () => {
     const message = checkValidData(
       emailRef?.current.value,
       passwordRef?.current.value,
-     !isSigninForm && nameRef?.current.value
+      !isSigninForm && nameRef?.current.value
     );
     setErrorMessage(message);
     if (message) return;
@@ -37,7 +39,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user, "SIGN IN");
-          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -56,16 +57,18 @@ const Login = () => {
           const user = userCredential.user;
           console.log(user, "Ahmed hereeee");
           updateProfile(user, {
-            displayName: nameRef?.current.value, photoURL: "https://muhammad-ahmed-khalid.netlify.app/static/Ahmed-Image-212e0a0785dbc8cbf887da4bd49f36c8.jpg"
-          }).then(() => {
-            const {uid, email, displayName, photoURL} = auth.currentUser;
-            console.log(user , "User is signed in");
-            dispatch(addUser({uid, email, displayName, photoURL}))
-            navigate("/browse")
-          }).catch((error) => {
-            console.log(error,"Error")
-          });
-          
+            displayName: nameRef?.current.value,
+            photoURL:
+              "https://muhammad-ahmed-khalid.netlify.app/static/Ahmed-Image-212e0a0785dbc8cbf887da4bd49f36c8.jpg",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              console.log(user, "User is signed in");
+              dispatch(addUser({ uid, email, displayName, photoURL }));
+            })
+            .catch((error) => {
+              console.log(error, "Error");
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
