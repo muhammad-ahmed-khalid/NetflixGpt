@@ -38,21 +38,21 @@ const Header = () => {
       });
   };
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen">
+    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex-row flex justify-between align-bottom">
       <img
-        className="w-52 "
+        className="w-52 h-36"
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="Logo"
       />
       {userData && (
-        <div>
-          <h4>{userData?.displayName}</h4>
-          <img className="w-52 " src={userData?.photoURL} alt="User Image" />
+        <div className="flex flex-row items-center">
+         
+          <img className="w-28 h-28 rounded-md mr-3" src={userData?.photoURL} alt="User Image" />
           <button
             onClick={() => handleClickSignout()}
-            className="bg-red-600 px-6 py-2 rounded text-white font-bold"
+            className="bg-red-600 px-6 py-2 rounded text-white font-bold h-auto"
           >
-            Sign out
+            Sign out ({userData?.displayName})
           </button>
         </div>
       )}

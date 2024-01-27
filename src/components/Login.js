@@ -123,7 +123,7 @@ const Login = () => {
               {isSigninForm ? "Sign In" : "Sign Up"}
             </button>
           </form>
-          <p>{errorMessage}</p>
+          <p className="text-red-500">{errorMessage}</p>
           <button onClick={handlePressToggle}>
             {isSigninForm ? "Create New Account" : "Already a user"}
           </button>
