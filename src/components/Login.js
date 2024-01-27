@@ -5,9 +5,12 @@ import { checkValidData } from "../utility/Utils";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../utility/firebase";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../utility/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [isSigninForm, setIsSigninForm] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const emailRef = useRef(null);
@@ -55,6 +58,9 @@ const Login = () => {
           updateProfile(user, {
             displayName: nameRef?.current.value, photoURL: "https://muhammad-ahmed-khalid.netlify.app/static/Ahmed-Image-212e0a0785dbc8cbf887da4bd49f36c8.jpg"
           }).then(() => {
+            const {uid, email, displayName, photoURL} = auth.currentUser;
+            console.log(user , "User is signed in");
+            dispatch(addUser({uid, email, displayName, photoURL}))
             navigate("/browse")
           }).catch((error) => {
             console.log(error,"Error")
