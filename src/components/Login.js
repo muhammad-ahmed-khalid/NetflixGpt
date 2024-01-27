@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Header from "./Header";
 import "../App.css";
 import { checkValidData } from "../utility/Utils";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../utility/firebase";
 
 const Login = () => {
@@ -12,20 +12,39 @@ const Login = () => {
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
 
-  const handlePressSubmit = () => {
+  const handlePressSubmit =  () => {
     const message = checkValidData(
       emailRef?.current.value,
       passwordRef?.current.value,
-      nameRef?.current.value
+     !isSigninForm && nameRef?.current.value
     );
     setErrorMessage(message);
     if (message) return;
 
     if (isSigninForm) {
       console.log("Sign in");
+      signInWithEmailAndPassword(
+        auth,
+        emailRef?.current.value,
+        passwordRef?.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user, "SIGN IN");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
     } else {
       console.log("Signup Form");
-      createUserWithEmailAndPassword(auth, emailRef?.current.value, passwordRef?.current.value)
+      createUserWithEmailAndPassword(
+        auth,
+        emailRef?.current.value,
+        passwordRef?.current.value
+      )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
@@ -34,7 +53,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + errorMessage)
+          setErrorMessage(errorCode + " - " + errorMessage);
         });
     }
   };
