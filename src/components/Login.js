@@ -2,26 +2,46 @@ import React, { useRef } from "react";
 import Header from "./Header";
 import "../App.css";
 import { checkValidData } from "../utility/Utils";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utility/firebase";
 
 const Login = () => {
   const [isSigninForm, setIsSigninForm] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const nameRef = useRef(null);
 
   const handlePressSubmit = () => {
     const message = checkValidData(
       emailRef?.current.value,
-      passwordRef?.current.value
+      passwordRef?.current.value,
+      nameRef?.current.value
     );
     setErrorMessage(message);
+    if (message) return;
+
+    if (isSigninForm) {
+      console.log("Sign in");
+    } else {
+      console.log("Signup Form");
+      createUserWithEmailAndPassword(auth, emailRef?.current.value, passwordRef?.current.value)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user, "Ahmed hereeee");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage)
+        });
+    }
   };
-  console.log(errorMessage, "errorMessageerrorMessageerrorMessage");
 
   const handlePressToggle = () => {
-    setErrorMessage(null)
+    setErrorMessage(null);
     setIsSigninForm(!isSigninForm);
-
   };
   return (
     <div>
@@ -39,6 +59,7 @@ const Login = () => {
           <form onSubmit={(e) => e.preventDefault()}>
             {!isSigninForm && (
               <input
+                ref={nameRef}
                 type="text"
                 placeholder="Full Name"
                 className="p-2 my-2 w-full  text-black"
