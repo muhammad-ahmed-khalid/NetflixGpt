@@ -2,10 +2,12 @@ import React, { useRef } from "react";
 import Header from "./Header";
 import "../App.css";
 import { checkValidData } from "../utility/Utils";
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../utility/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate()
   const [isSigninForm, setIsSigninForm] = React.useState(true);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const emailRef = useRef(null);
@@ -32,6 +34,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user, "SIGN IN");
+          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -49,6 +52,14 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user, "Ahmed hereeee");
+          updateProfile(user, {
+            displayName: nameRef?.current.value, photoURL: "https://muhammad-ahmed-khalid.netlify.app/static/Ahmed-Image-212e0a0785dbc8cbf887da4bd49f36c8.jpg"
+          }).then(() => {
+            navigate("/browse")
+          }).catch((error) => {
+            console.log(error,"Error")
+          });
+          
         })
         .catch((error) => {
           const errorCode = error.code;
