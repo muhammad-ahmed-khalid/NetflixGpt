@@ -9,7 +9,6 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const userData = useSelector((state) => state.user);
-  console.log(userData, "userDatauserDatauserData");
 
   useEffect(() => {
    const unsubscribe =  onAuthStateChanged(auth, (user) => {

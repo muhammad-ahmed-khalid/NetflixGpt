@@ -1,23 +1,28 @@
-import React, { useEffect } from 'react'
-import Header from './Header'
-import { API_OPTIONS } from '../constants/constants'
+import React, { useEffect } from "react";
+import Header from "./Header";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import { useSelector } from "react-redux";
+import MainContainer from "./MainContainer";
 
 const Browse = () => {
+  useNowPlayingMovies();
 
-  const getNowPlayingMovies = async() => {
-    const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', API_OPTIONS)
-   
-   const json = await data.json()
-    console.log(json, "jsonjsonjson")
-  }
-useEffect(() => {
-  getNowPlayingMovies()
-},[])
+  
+  // This will get Now Playing movies from the store
+  const getNowPlayMovies = useSelector((state) => state.movies?.nowPlayingMovies);
+  if(!getNowPlayMovies) return
+
+  const specficMovie = getNowPlayMovies[0];
+
+
+  console.log(specficMovie, "specficMovie")
   return (
     <div>
       <Header />
+      <MainContainer />
+      {/* <p className="pt-60">Movie Name:  {specficMovie.original_title}</p> */}
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;
