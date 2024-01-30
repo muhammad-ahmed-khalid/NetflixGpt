@@ -20,13 +20,13 @@ const Login = () => {
   const nameRef = useRef(null);
 
   const handlePressSubmit = () => {
-    const message = checkValidData(
-      emailRef?.current.value,
-      passwordRef?.current.value,
-      !isSigninForm && nameRef?.current.value
-    );
-    setErrorMessage(message);
-    if (message) return;
+    // const message = checkValidData(
+    //   emailRef?.current.value,
+    //   passwordRef?.current.value,
+    //   !isSigninForm && nameRef?.current.value
+    // );
+    // setErrorMessage(message);
+    // if (message) return;
 
     if (isSigninForm) {
       console.log("Sign in");
