@@ -4,7 +4,7 @@ function VideoInfo({ data }) {
   console.log(data, "datadatadatadata");
   const { title, overview, adult } = data || {};
   return (
-    <div className="pt-60 relative aspect-video pl-12 bg-gradient-to-r from-black z-10">
+    <div className="pt-60 relative aspect-video pl-12 bg-gradient-to-r from-black">
       <h1 className="text-5xl text-white font-bold">{title}</h1>
       <div className="relative">
         <div className="w-4/12">
