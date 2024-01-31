@@ -12,9 +12,8 @@ function MainContainer() {
 
   const specficMovie = getNowPlayMovies[0];
 
-  console.log(specficMovie, "specficMovie");
   return (
-    <div className="h-screen">
+    <div className="h-full relative z-10">
       <VideoInfo data={specficMovie}/>
       <VideoBackground movieID={specficMovie?.id} />
     </div>

@@ -25,7 +25,6 @@ function VideoBackground({ movieID }) {
       className="w-full aspect-video"
         src={"https://www.youtube.com/embed/"+vidData?.key+"?&autoplay=1&mute=1&loop=1"}
         title="Netflix-GPT"
-        autp
       ></iframe>
     </div>
   );

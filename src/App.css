@@ -15,3 +15,21 @@
     align-items: center;
     justify-content: center;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #dd0f0f; /* Set your desired thumb color */
+    border-radius: 24px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Set your desired track color */
+  }
+
+.borderRed{
+    border-color: #dd0f0f;
+}

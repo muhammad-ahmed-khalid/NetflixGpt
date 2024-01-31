@@ -1,17 +1,23 @@
-import React, { useEffect } from "react";
-import Header from "./Header";
+import React from "react";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
-import { useSelector } from "react-redux";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import useUpcommingMovies from "../hooks/useUpcommingMovies";
+import Header from "./Header";
 import MainContainer from "./MainContainer";
+import VideoListWrapper from "./SuggestedVideoList/VideoListWrapper";
 
 const Browse = () => {
   useNowPlayingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcommingMovies()
 
-  
   return (
     <div>
       <Header />
       <MainContainer />
+      <VideoListWrapper />
     </div>
   );
 };
