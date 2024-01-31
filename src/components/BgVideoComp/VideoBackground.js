@@ -17,10 +17,11 @@ function VideoBackground({ movieID }) {
   }, []);
 
   return (
-    <div className="absolute w-full h-full top-0 left-0 bg-opacity-15 -z-10">
+    <div className="absolute w-full aspect-video top-0 left-0 bg-opacity-15">
       <iframe
-        width="100%"
-        height="100%"
+      className="w-full aspect-video"
+        // width="100%"
+        // height="100%"
         src="https://www.youtube.com/embed/UGc5Tzz19UY"
         title="Netflix-GPT"
         // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
