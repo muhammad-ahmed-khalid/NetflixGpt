@@ -10,7 +10,7 @@ function MainContainer() {
   );
   if (!getNowPlayMovies) return;
 
-  const specficMovie = getNowPlayMovies[1];
+  const specficMovie = getNowPlayMovies[0];
 
   console.log(specficMovie, "specficMovie");
   return (
