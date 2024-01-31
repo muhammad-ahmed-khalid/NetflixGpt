@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { API_OPTIONS } from "../../constants/constants";
 
 function VideoBackground({ movieID }) {
   console.log(movieID, "movieID VIDEO BACKGROUND");
+
+  const [vidData, setVidData] = useState(null)
 
   const getVideoInfo = async () => {
     const data = await fetch(
@@ -10,7 +12,11 @@ function VideoBackground({ movieID }) {
       API_OPTIONS
     );
     const json = await data.json();
-    console.log(json?.results, "jsonjsonjson");
+    const filterResult = json?.results?.filter(
+      (result) => result?.type === "Trailer"
+    )
+    console.log(filterResult, "filterResultfilterResultfilterResultfilterResultfilterResult");
+    setVidData(filterResult[0])
   };
   useEffect(() => {
     getVideoInfo();
@@ -20,10 +26,9 @@ function VideoBackground({ movieID }) {
     <div className="absolute w-full aspect-video top-0 left-0 bg-opacity-15">
       <iframe
       className="w-full aspect-video"
-        // width="100%"
-        // height="100%"
-        src="https://www.youtube.com/embed/UGc5Tzz19UY"
+        src={"https://www.youtube.com/embed/"+vidData?.key+"?&autoplay=1&mute=1"}
         title="Netflix-GPT"
+        autp
         // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
     </div>
