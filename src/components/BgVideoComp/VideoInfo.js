@@ -1,7 +1,6 @@
 import React from "react";
 
 function VideoInfo({ data }) {
-  console.log(data, "datadatadatadata");
   const { title, overview, adult } = data || {};
   return (
     <div className="relative aspect-video pl-12 bg-gradient-to-r from-black flex flex-col justify-center">

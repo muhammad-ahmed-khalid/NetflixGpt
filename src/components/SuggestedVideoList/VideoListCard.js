@@ -2,7 +2,6 @@ import React from 'react'
 import { IMAGE_URL } from '../../constants/constants'
 
 function VideoListCard({data}) {
-  console.log(data, "datadatadata CARD")
   const {
     title,
     poster_path

@@ -4,6 +4,7 @@ import { auth } from "../utility/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utility/userSlice";
+import { toggleGPT } from "../utility/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -36,6 +37,10 @@ const Header = () => {
         console.log(error);
       });
   };
+
+  const handlePressToggle = () => {
+    dispatch(toggleGPT())
+  }
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black flex-row flex justify-between align-bottom w-full z-50">
       <button onClick={() => navigate("/")}>
@@ -47,7 +52,9 @@ const Header = () => {
       </button>
       {userData && (
         <div className="flex flex-row items-center">
-         
+          <button className="bg-teal-500 px-6 py-2 rounded text-white font-bold h-auto mr-8" onClick={() => handlePressToggle()}>
+            GPT Search
+          </button>
           <img className="w-16 h-w-16 rounded-full mr-4" src={userData?.photoURL} alt="User Image" />
           <button
             onClick={() => handleClickSignout()}
