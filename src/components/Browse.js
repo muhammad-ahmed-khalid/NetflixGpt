@@ -15,15 +15,12 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useUpcommingMovies();
-
   const showGPT = useSelector((state) => state.gptSlice.isShowGPT);
-  console.log(showGPT, "showGPTshowGPTshowGPT");
 
   return (
     <div>
       <Header />
       {showGPT ? (
-        // <button className="pt-64" onClick={() => handlePressToggle()}>AOOO</button>
         <GptSearch />
       ) : (
         <>

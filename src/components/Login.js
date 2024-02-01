@@ -10,6 +10,7 @@ import { checkValidData } from "../utility/Utils";
 import { auth } from "../utility/firebase";
 import { addUser } from "../utility/userSlice";
 import Header from "./Header";
+import { BG_IMAGE } from "../constants/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -89,7 +90,7 @@ const Login = () => {
         <img
           className="object-cover loginBGImage"
           sizes="cover"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9134db96-10d6-4a64-a619-a21da22f8999/e1a226fa-a69c-4bb8-a028-57187cc2d894/PK-en-20240115-trifectadaily-perspective_alpha_website_large.jpg"
+          src={BG_IMAGE}
         />
       </div>
       <div className="formWrapper">
