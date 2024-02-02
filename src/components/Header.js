@@ -12,6 +12,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const userData = useSelector((state) => state.user);
+  const isShowLang = useSelector((state) => state.gptSlice.isShowGPT);
 
   useEffect(() => {
    const unsubscribe =  onAuthStateChanged(auth, (user) => {
@@ -58,13 +59,15 @@ const Header = () => {
       </button>
       {userData && (
         <div className="flex flex-row items-center">
-          <select onChange={(e) => handleLangugageChange(e.target.value)} className="bg-teal-500 border-white border-2 px-6 py-2 rounded text-white font-bold h-auto mr-4">
-            {SUPPORTED_LANGUAGE.map((item) => (
-              <option key={item?.idetity} value={item?.idetity}>{item?.langName}</option>
-            ))}
-          </select>
+          {isShowLang && 
+             <select onChange={(e) => handleLangugageChange(e.target.value)} className="bg-teal-500 border-white border-2 px-6 py-2 rounded text-white font-bold h-auto mr-4">
+             {SUPPORTED_LANGUAGE.map((item) => (
+               <option key={item?.idetity} value={item?.idetity}>{item?.langName}</option>
+             ))}
+           </select>
+          }
           <button className="bg-teal-500 px-6 py-2 rounded text-white font-bold h-auto mr-8" onClick={() => handlePressToggle()}>
-            GPT Search
+           {isShowLang ? "Go Back" : "GPT Search"} 
           </button>
           <img className="w-16 h-w-16 rounded-full mr-4" src={userData?.photoURL} alt="User Image" />
           <button
