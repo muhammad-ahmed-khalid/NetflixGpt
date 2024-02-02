@@ -9,7 +9,7 @@ function VideoListCard({data}) {
  
   return (
     <div className='mr-2'>
-      <p className='text-white text-sm mb-4'>{title}</p>
+      <p className='text-white text-sm mb-4 min-h-11'>{title}</p>
       <img alt='Image Poster' src={IMAGE_URL + poster_path} className='max-w-[250px] border-2 borderRed mb-4'/>
     </div>
   )

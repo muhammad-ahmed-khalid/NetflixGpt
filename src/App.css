@@ -33,3 +33,6 @@
 .borderRed{
     border-color: #dd0f0f;
 }
+.innerWrapperVidList > div:last-child{
+  margin-bottom: 0;
+}
