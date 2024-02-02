@@ -7,6 +7,9 @@ const lang = {
     },
     te : {
       Search : "శోధన"
+     },
+     rl:{
+        Search: "Dhundo"
      }
 }
 export default lang

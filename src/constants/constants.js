@@ -31,5 +31,9 @@ export const SUPPORTED_LANGUAGE = [
   {
     idetity: "te",
     langName: "Telugu"
+  },
+  {
+    idetity: "rl",
+    langName: "Roman"
   }
 ]

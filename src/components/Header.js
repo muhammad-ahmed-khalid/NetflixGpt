@@ -58,7 +58,7 @@ const Header = () => {
       </button>
       {userData && (
         <div className="flex flex-row items-center">
-          <select onChange={(e) => handleLangugageChange(e.target.value)}>
+          <select onChange={(e) => handleLangugageChange(e.target.value)} className="bg-teal-500 border-white border-2 px-6 py-2 rounded text-white font-bold h-auto mr-4">
             {SUPPORTED_LANGUAGE.map((item) => (
               <option key={item?.idetity} value={item?.idetity}>{item?.langName}</option>
             ))}
