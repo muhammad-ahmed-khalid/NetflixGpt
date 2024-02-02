@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utility/userSlice";
 import { toggleGPT } from "../utility/gptSlice";
-import { LOGO } from "../constants/constants";
+import { LOGO, SUPPORTED_LANGUAGE } from "../constants/constants";
+import { selectedLangugage } from "../utility/languageSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -42,6 +43,10 @@ const Header = () => {
   const handlePressToggle = () => {
     dispatch(toggleGPT())
   }
+  const handleLangugageChange = (lang) => {
+    console.log(lang, "langlanglanglanglanglang")
+    dispatch(selectedLangugage(lang))
+  }
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black flex-row flex justify-between align-bottom w-full z-50">
       <button onClick={() => navigate("/")}>
@@ -53,6 +58,11 @@ const Header = () => {
       </button>
       {userData && (
         <div className="flex flex-row items-center">
+          <select onChange={(e) => handleLangugageChange(e.target.value)}>
+            {SUPPORTED_LANGUAGE.map((item) => (
+              <option key={item?.idetity} value={item?.idetity}>{item?.langName}</option>
+            ))}
+          </select>
           <button className="bg-teal-500 px-6 py-2 rounded text-white font-bold h-auto mr-8" onClick={() => handlePressToggle()}>
             GPT Search
           </button>
