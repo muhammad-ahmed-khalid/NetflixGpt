@@ -45,20 +45,19 @@ const Header = () => {
     dispatch(toggleGPT())
   }
   const handleLangugageChange = (lang) => {
-    console.log(lang, "langlanglanglanglanglang")
     dispatch(selectedLangugage(lang))
   }
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black flex-row flex justify-between align-bottom w-full z-50">
+    <div className="absolute px-8 py-2 bg-gradient-to-b from-black flex-col flex justify-between align-bottom w-full z-50 md:flex-row">
       <button onClick={() => navigate("/")}>
       <img
-        className="w-52 h-28"
+        className="w-52 h-28 mx-auto md:mx-0"
         src={LOGO}
         alt="Logo"
       />
       </button>
       {userData && (
-        <div className="flex flex-row items-center">
+        <div className="flex flex-col items-center md:flex-row">
           {isShowLang && 
              <select onChange={(e) => handleLangugageChange(e.target.value)} className="bg-teal-500 border-white border-2 px-6 py-2 rounded text-white font-bold h-auto mr-4">
              {SUPPORTED_LANGUAGE.map((item) => (
