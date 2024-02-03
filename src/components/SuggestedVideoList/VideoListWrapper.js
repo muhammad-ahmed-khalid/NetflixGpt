@@ -12,7 +12,7 @@ function VideoListWrapper() {
     <>
     {getNowPlayingMovies && 
       <div className="bg-black">
-      <div className="-mt-56 z-20 relative innerWrapperVidList">
+      <div className="md:-mt-56 z-20 relative innerWrapperVidList">
       <VideoList title="Now Playing" data={getNowPlayingMovies} />
       <VideoList title="Popular Movies" data={getPopularMovies} />
       <VideoList title="Top Rated Movies" data={getTopRatedMovies} />

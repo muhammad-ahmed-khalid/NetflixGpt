@@ -20,9 +20,9 @@ function VideoBackground({ movieID }) {
   }, []);
 
   return (
-    <div className="absolute w-full aspect-video top-0 left-0 bg-opacity-15 -z-10">
+    <div className="absolute w-full h-full md:aspect-video top-0 left-0 bg-opacity-15 -z-10">
       <iframe
-      className="w-full aspect-video"
+      className="w-full h-full md:aspect-video"
         src={"https://www.youtube.com/embed/"+vidData?.key+"?&autoplay=1&mute=1&loop=1"}
         title="Netflix-GPT"
       ></iframe>

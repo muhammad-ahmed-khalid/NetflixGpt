@@ -27,7 +27,7 @@ const getSearchResult = async() => {
 }
  
   return (
-    <div className='md:w-1/2 w-[90%] mr-auto ml-auto pt-[60%] md:pt-[10%]'>
+    <div className='md:w-1/2 w-[90%] mr-auto ml-auto pt-[70%] md:pt-[10%]'>
       <form onSubmit={(e) => e.preventDefault()} className=' bg-black flex flex-col md:gird md:grid grid-cols-12 px-4 rounded-md border-2 borderRed'>
         <input ref={searchRef} type="text" placeholder="Search Here..." className='md:col-span-9 m-3 py-2 px-4 rounded-md'/>
         <button className="bg-red-600 px-6 py-2 rounded text-white  m-3 font-bold h-auto md:col-span-3" onClick={() => handleSearch()}>{lang[selectedLang]?.Search}</button>
