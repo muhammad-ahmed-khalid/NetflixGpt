@@ -57,21 +57,21 @@ const Header = () => {
       />
       </button>
       {userData && (
-        <div className="flex flex-col items-center md:flex-row">
+        <div className="grid grid-cols-12 items-center md:flex md:flex-row">
           {isShowLang && 
-             <select onChange={(e) => handleLangugageChange(e.target.value)} className="bg-teal-500 border-white border-2 px-6 py-2 rounded text-white font-bold h-auto mr-4">
+             <select onChange={(e) => handleLangugageChange(e.target.value)} className="w-11/12 bg-teal-500 text-xs md:text-sm border-white border-2 px-6 py-2 rounded text-white font-bold h-auto mr-4 col-span-6">
              {SUPPORTED_LANGUAGE.map((item) => (
                <option key={item?.idetity} value={item?.idetity}>{item?.langName}</option>
              ))}
            </select>
           }
-          <button className="bg-teal-500 px-6 py-2 rounded text-white font-bold h-auto mr-8" onClick={() => handlePressToggle()}>
+          <button className="w-full text-xs md:text-sm col-span-6 bg-teal-500 px-6 py-2 rounded text-white font-bold h-auto mr-8" onClick={() => handlePressToggle()}>
            {isShowLang ? "Go Back" : "GPT Search"} 
           </button>
-          <img className="w-16 h-w-16 rounded-full mr-4" src={userData?.photoURL} alt="User Image" />
+          <img className="col-span-6 w-16 h-w-16 rounded-full mr-4 mt-2" src={userData?.photoURL} alt="User Image" />
           <button
             onClick={() => handleClickSignout()}
-            className="bg-red-600 px-6 py-2 rounded text-white font-bold h-auto"
+            className="w-full md:whitespace-nowrap col-span-6 bg-red-600 px-6 py-2 rounded text-white font-bold h-auto text-xs md:text-sm"
           >
             Sign out ( {userData?.displayName} )
           </button>
