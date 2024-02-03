@@ -37,3 +37,5 @@ export const SUPPORTED_LANGUAGE = [
     langName: "Roman"
   }
 ]
+
+export const OPEN_AI_SECRET_KEY = "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"
